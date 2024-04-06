@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GalleryModel = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const users_model_1 = require("../users/users.model");
 let GalleryModel = class GalleryModel extends sequelize_typescript_1.Model {
 };
 exports.GalleryModel = GalleryModel;
@@ -18,9 +19,37 @@ __decorate([
     (0, sequelize_typescript_1.Column)({
         primaryKey: true,
         type: sequelize_typescript_1.DataType.TEXT,
+        unique: true,
+        allowNull: false
     }),
     __metadata("design:type", String)
 ], GalleryModel.prototype, "id", void 0);
+__decorate([
+    (0, sequelize_typescript_1.ForeignKey)(() => users_model_1.UsersModel),
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.TEXT,
+        allowNull: false
+    }),
+    __metadata("design:type", String)
+], GalleryModel.prototype, "userId", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.TEXT,
+        unique: true,
+        allowNull: false
+    }),
+    __metadata("design:type", String)
+], GalleryModel.prototype, "path", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.TEXT,
+    }),
+    __metadata("design:type", String)
+], GalleryModel.prototype, "description", void 0);
+__decorate([
+    (0, sequelize_typescript_1.BelongsTo)(() => users_model_1.UsersModel),
+    __metadata("design:type", users_model_1.UsersModel)
+], GalleryModel.prototype, "author", void 0);
 exports.GalleryModel = GalleryModel = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: 'gallery', updatedAt: false })
 ], GalleryModel);

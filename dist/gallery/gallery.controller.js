@@ -5,13 +5,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GalleryController = void 0;
 const common_1 = require("@nestjs/common");
+const gallery_service_1 = require("./gallery.service");
+const platform_express_1 = require("@nestjs/platform-express");
+const create_gallery_dto_1 = require("./dto/create-gallery.dto");
 let GalleryController = class GalleryController {
+    constructor(galleryService) {
+        this.galleryService = galleryService;
+    }
+    CreateGallery(dto, gallery) {
+        return this.galleryService.create(dto, gallery);
+    }
 };
 exports.GalleryController = GalleryController;
+__decorate([
+    (0, common_1.Post)(),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('gallery')),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.UploadedFile)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_gallery_dto_1.CreateGalleryDto, Object]),
+    __metadata("design:returntype", void 0)
+], GalleryController.prototype, "CreateGallery", null);
 exports.GalleryController = GalleryController = __decorate([
-    (0, common_1.Controller)('gallery')
+    (0, common_1.Controller)('gallery'),
+    __metadata("design:paramtypes", [gallery_service_1.GalleryService])
 ], GalleryController);
 //# sourceMappingURL=gallery.controller.js.map

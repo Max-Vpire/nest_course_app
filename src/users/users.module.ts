@@ -6,10 +6,11 @@ import { UsersModel } from './users.model';
 import { RolesModule } from '../roles/roles.module';
 import { UserRoleModel } from '../roles/user-role.model';
 import { RolesModel } from '../roles/roles.model';
+import { GalleryModel } from '../gallery/gallery.model';
 
 @Module({
   imports: [
-    SequelizeModule.forFeature([UsersModel, RolesModel, UserRoleModel]),
+    SequelizeModule.forFeature([UsersModel, RolesModel, UserRoleModel, GalleryModel]),
     RolesModule
   ],
   controllers: [UsersController],

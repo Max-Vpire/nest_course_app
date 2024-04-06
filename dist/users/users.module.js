@@ -15,13 +15,14 @@ const users_model_1 = require("./users.model");
 const roles_module_1 = require("../roles/roles.module");
 const user_role_model_1 = require("../roles/user-role.model");
 const roles_model_1 = require("../roles/roles.model");
+const gallery_model_1 = require("../gallery/gallery.model");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
 exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            sequelize_1.SequelizeModule.forFeature([users_model_1.UsersModel, roles_model_1.RolesModel, user_role_model_1.UserRoleModel]),
+            sequelize_1.SequelizeModule.forFeature([users_model_1.UsersModel, roles_model_1.RolesModel, user_role_model_1.UserRoleModel, gallery_model_1.GalleryModel]),
             roles_module_1.RolesModule
         ],
         controllers: [users_controller_1.UsersController],

@@ -1,8 +1,9 @@
-import { BelongsToMany, Column, DataType, Model, ModelCtor, Table } from 'sequelize-typescript';
+import { BelongsToMany, Column, DataType, HasMany, Model, ModelCtor, Table } from 'sequelize-typescript';
 import { UserDto } from './dto/user.dto';
 import { ApiProperty } from '@nestjs/swagger';
 import { UserRoleModel } from '../roles/user-role.model';
 import { RolesModel } from '../roles/roles.model';
+import { GalleryModel } from '../gallery/gallery.model';
 
 interface CreateUserAttrs {
    id: string,
@@ -45,4 +46,8 @@ export class UsersModel extends Model<UserDto, CreateUserAttrs>{
 
   @BelongsToMany(() => RolesModel, () => UserRoleModel)
   roles: RolesModel[];
+
+  @HasMany(() => GalleryModel)
+  gallery: GalleryModel[];
+
 }
